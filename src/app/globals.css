@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --farm-dark: #123B2A;
+    --farm-forest: #1B4D36;
+    --farm-green: #2F6B45;
+    --farm-light-green: #EAF2E7;
+    --farm-gold: #D4AA52;
+    --farm-cream: #F8F6F0;
+    --farm-charcoal: #1E2B23;
+    --farm-card: #FFFFFF;
+    --farm-border: #E2E8E0;
+    --farm-muted: #64746A;
+  }
+
+  body {
+    background-color: var(--farm-cream);
+    color: var(--farm-charcoal);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Scrollbar for dashboards & POS */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1EFEA;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4CFC7;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2F6B45;
+}
+
+/* Receipt Print Styling */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #thermal-receipt-print-area,
+  #thermal-receipt-print-area * {
+    visibility: visible;
+  }
+  #thermal-receipt-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm !important;
+    padding: 8px !important;
+    font-family: monospace !important;
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Smooth card transitions and subtle organic shadows */
+.farm-card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(18, 59, 42, 0.06), 0 2px 6px -1px rgba(18, 59, 42, 0.04);
+}
+
+.farm-card-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.farm-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(18, 59, 42, 0.12), 0 4px 10px -2px rgba(18, 59, 42, 0.06);
+}
+
+/* Badge pulse for live indicators */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.05); }
+}
+.animate-soft-pulse {
+  animation: softPulse 2.5s infinite ease-in-out;
+}
